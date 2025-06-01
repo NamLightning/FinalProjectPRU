@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI  scoreText;
     [SerializeField] private GameObject gameOverUI;
     private bool isGameOver = false;
+    [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject pauseMenu;
+
     void Start()
     {
         UpdateScore();
@@ -50,19 +52,46 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+
+
     public bool IsGameOver()
     {
         return isGameOver;
     }
 
-    public void pauseGameMenu()
+    public void StartGame()
     {
+        mainMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void MainMenu()
+    {
+        mainMenu.SetActive(true);
+        pauseMenu.SetActive(false);
+        Time.timeScale = 0f;
+    }
+    public void pauseGameMenu()
+    {   
+        mainMenu.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale= 0f ;
     }
 
     public void ResumeGame()
     {
+        mainMenu.SetActive(false);
+        pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Game");
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
