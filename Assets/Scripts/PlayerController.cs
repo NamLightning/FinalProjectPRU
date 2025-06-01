@@ -25,6 +25,10 @@ public class PlayerController : MonoBehaviour
         if (gameManager.IsGameOver()) return;
         HandleMovement();
         HandleJump();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameManager.pauseGameMenu();
+        }
     }
     private void HandleMovement()
     {
