@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     private bool isGrounded;
     private Rigidbody2D rb;
-    private GameManager gameManager;
+    [SerializeField]private GameManager gameManager;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
