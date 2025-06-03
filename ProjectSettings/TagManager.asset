@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Coin
   - Trap
+<<<<<<< Updated upstream
+=======
+  - Enemy
+  - Sword
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -14,9 +19,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerAttack
   - 
   - 
   - 

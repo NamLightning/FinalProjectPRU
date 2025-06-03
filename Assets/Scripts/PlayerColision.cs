@@ -18,5 +18,17 @@ public class PlayerColision : MonoBehaviour
         {
             gameManager.GameOver();
         }
+<<<<<<< Updated upstream
+=======
+        else if (collision.CompareTag("Enemy"))
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy == null || !enemy.isDead)
+            {
+                gameManager.GameOver();
+            }
+        }
+       
+>>>>>>> Stashed changes
     }
 }
