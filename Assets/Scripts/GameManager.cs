@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 0f;
         UpdateScore();
         gameOverUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Nam");
     }
     public void QuitGame()
     {
