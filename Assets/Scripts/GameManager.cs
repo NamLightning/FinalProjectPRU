@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         UpdateScore() ;
         Time.timeScale = 1;
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Nam");
     }
 
 
