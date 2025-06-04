@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float distance = 5f;
     private Vector3 startPos;
     private bool movingRight = true;
+    public bool isDead = false;
     void Start()
     {
         startPos = transform.position;
