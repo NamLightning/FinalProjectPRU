@@ -1,11 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerColision : MonoBehaviour
 {
     private GameManager gameManager;
+    private PlayerController playerController;
     private void Awake()
     {
         gameManager = FindAnyObjectByType<GameManager>();
+        playerController = GetComponent<PlayerController>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,11 +19,18 @@ public class PlayerColision : MonoBehaviour
         }
         else if (collision.CompareTag("Trap"))
         {
+            playerController.PlayDeathAnimation();
             gameManager.GameOver();
         }
-        else if (collision.CompareTag("Enemy"))
+        else if (collision.CompareTag("Enemy")) 
         {
-            gameManager.GameOver();
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy == null || !enemy.isDead)
+            {
+                playerController.PlayDeathAnimation();
+                gameManager.GameOver();
+            }
+            
         }
     }
 }

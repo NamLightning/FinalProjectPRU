@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         UpdateScore();
         gameOverUI.SetActive(false);
     }
@@ -49,8 +49,9 @@ public class GameManager : MonoBehaviour
         score = 0;
         UpdateScore() ;
         Time.timeScale = 1;
-        SceneManager.LoadScene("Nam");
+        SceneManager.LoadScene("Hoang");
         mainMenu.SetActive(false);
+        StartGame();
     }
 
 
