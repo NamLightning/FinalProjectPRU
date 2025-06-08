@@ -1,10 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
+    //Điểm đến
     [SerializeField] private Transform destination;
 
-    public Transform GetDestination()
+
+    public Transform GetDestion()
     {
         return destination;
     }

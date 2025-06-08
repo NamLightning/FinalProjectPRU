@@ -1,16 +1,19 @@
+﻿using System.Xml.Serialization;
 using UnityEngine;
 
-public class Destination : MonoBehaviour
+public class PlayerTeleport : MonoBehaviour
 {
+    //Vị trí dịch chuyển
     private GameObject currentTeleporter;
-
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.W))
         {
-            if (currentTeleporter != null)
+            if(currentTeleporter != null)
             {
+
                 transform.position = currentTeleporter.GetComponent<Teleporter>().GetDestion().position;
+
             }
         }
     }
@@ -25,12 +28,9 @@ public class Destination : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Teleporter"))
+        if(collision.CompareTag("Teleporter"))
         {
-            if (collision.gameObject == currentTeleporter)
-            {
-                currentTeleporter = null;
-            }
+            currentTeleporter = null;
         }
     }
 }
