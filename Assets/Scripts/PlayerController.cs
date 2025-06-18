@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private Rigidbody2D rb;
     [SerializeField]private GameManager gameManager;
+    private GameObject currentTeleporter;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -41,6 +42,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameManager.pauseGameMenu();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (currentTeleporter != null)
+            {
+                transform.position = currentTeleporter.GetComponent<Teleporter>().GetDestination().position;
+            }
         }
     }
     private void HandleMovement()
@@ -88,5 +96,24 @@ public class PlayerController : MonoBehaviour
     public void PlayDeathAnimation()
     {
         anim.SetTrigger("Death");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Teleporter"))
+        {
+            currentTeleporter = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Teleporter"))
+        {
+            if (collision.gameObject == currentTeleporter)
+            {
+                currentTeleporter = null;
+            }
+        }
     }
 }
