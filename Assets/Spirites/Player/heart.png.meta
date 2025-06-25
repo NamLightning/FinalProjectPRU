@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 8b9bfe96b0fd2cc40baca8068f6277be
+guid: 408b34f4fba7f044b8cd188e27f28d32
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7829287814640732239
-    second: demon_idle_3_0
+      213: -205270267638800340
+    second: heart_0
   - first:
-      213: 3143442201046017033
-    second: demon_idle_3_1
-  - first:
-      213: -6086245830935089187
-    second: demon_idle_3_2
+      213: 7904136456745960365
+    second: heart_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: demon_idle_3_0
+      name: heart_0
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 93
-        height: 96
+        x: 22
+        y: 144
+        width: 76
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f4884fb39c737ac60800000000000000
-      internalID: 7829287814640732239
+      spriteID: c20a07677cbb62df0800000000000000
+      internalID: -205270267638800340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: demon_idle_3_1
+      name: heart_1
       rect:
         serializedVersion: 2
-        x: 106
-        y: 71
-        width: 14
-        height: 38
+        x: 22
+        y: 24
+        width: 76
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,30 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 904e155f600cf9b20800000000000000
-      internalID: 3143442201046017033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: demon_idle_3_2
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 72
-        width: 12
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ddf696fb9af498ba0800000000000000
-      internalID: -6086245830935089187
+      spriteID: da3ce80ca3221bd60800000000000000
+      internalID: 7904136456745960365
       vertices: []
       indices: 
       edges: []
@@ -175,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c7d7c79dd1ea652469b32a10de658227
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      demon_idle_3_0: 7829287814640732239
-      demon_idle_3_1: 3143442201046017033
-      demon_idle_3_2: -6086245830935089187
+      heart_0: -205270267638800340
+      heart_1: 7904136456745960365
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

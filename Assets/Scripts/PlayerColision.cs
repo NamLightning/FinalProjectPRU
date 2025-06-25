@@ -19,18 +19,17 @@ public class PlayerColision : MonoBehaviour
         }
         else if (collision.CompareTag("Trap"))
         {
-            playerController.PlayDeathAnimation();
-            gameManager.GameOver();
+            playerController.TakeHit(collision.transform.position);
         }
-        else if (collision.CompareTag("Enemy")) 
+
+        else if (collision.CompareTag("Enemy"))
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy == null || !enemy.isDead)
             {
-                playerController.PlayDeathAnimation();
-                gameManager.GameOver();
+                playerController.TakeHit(collision.transform.position);
             }
-            
         }
+
     }
 }
