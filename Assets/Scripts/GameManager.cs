@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
@@ -10,11 +11,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject pauseMenu;
 
+    [SerializeField] private int maxHealth = 3;
+    private int currentHealth;
+
+   /* [SerializeField]
+    private GameObject[] heartIcons;*/
+
+    private PlayerController playerController;
+
+    [SerializeField]
+    private Image[] heartIcons;
+
+    [SerializeField]
+    private Sprite fullHeart;
+    [SerializeField]
+    private Sprite emptyHeart;
+
     void Start()
     {
+        playerController = FindAnyObjectByType<PlayerController>();
         Time.timeScale = 1f;
         UpdateScore();
         gameOverUI.SetActive(false);
+        currentHealth = maxHealth;
+        UpdateHearts();
     }
 
     void Update()
@@ -37,11 +57,53 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        if (isGameOver) return;
+
         isGameOver = true;
         score = 0;
+
+        playerController.PlayDeathAnimation();
+
+        StartCoroutine(ShowGameOverAfterDelay(1.5f));
+    }
+
+    private System.Collections.IEnumerator ShowGameOverAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+
         Time.timeScale = 0;
         gameOverUI.SetActive(true);
     }
+
+    public void TakeDamage(int damage)
+    {
+        if (isGameOver) return;
+
+        currentHealth -= damage;
+        UpdateHearts();
+
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            
+            GameOver();
+        }
+    }
+    private void UpdateHearts()
+    {
+        for (int i = 0; i < heartIcons.Length; i++)
+        {
+            if (i < currentHealth)
+            {
+                heartIcons[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartIcons[i].sprite = emptyHeart;
+            }
+        }
+    }
+
 
     public void RestartGame()
     {
