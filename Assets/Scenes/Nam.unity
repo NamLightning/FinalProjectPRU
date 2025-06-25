@@ -1720,7 +1720,7 @@ Transform:
   m_GameObject: {fileID: 70489901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -88.336, y: -11.46, z: -0.01}
+  m_LocalPosition: {x: -88.336, y: -11.6, z: -0.01}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2778,7 +2778,7 @@ Transform:
   m_GameObject: {fileID: 105150023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -98.9, y: -2.74, z: -10}
+  m_LocalPosition: {x: -98.9, y: -3.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7224,7 +7224,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -78.756004, y: -10.81, z: 0.04}
-  m_LocalScale: {x: 1, y: 0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1.1025, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1103835956}
@@ -9143,7 +9143,7 @@ Transform:
   m_GameObject: {fileID: 444987451}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -90.256004, y: -11.46, z: -0.11}
+  m_LocalPosition: {x: -90.256004, y: -11.6, z: -0.11}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10744,7 +10744,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -98.9, y: -2.74, z: -10}
+  m_LocalPosition: {x: -98.9, y: -3.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13221,7 +13221,7 @@ Transform:
   m_GameObject: {fileID: 640627126}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -78.744, y: -11.477, z: -0.01}
+  m_LocalPosition: {x: -78.744, y: -11.6, z: -0.01}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17880,7 +17880,7 @@ Transform:
   m_GameObject: {fileID: 875143980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83.618004, y: -11.477, z: -0.01}
+  m_LocalPosition: {x: -83.618004, y: -11.6, z: -0.01}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18390,7 +18390,7 @@ Transform:
   m_GameObject: {fileID: 931214426}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -89.306, y: -11.46, z: -0.01}
+  m_LocalPosition: {x: -89.306, y: -11.6, z: -0.01}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18844,8 +18844,8 @@ Transform:
   m_GameObject: {fileID: 935071826}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -98.9, y: -2.74, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -98.9, y: -3.01, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1439144806}
@@ -29740,7 +29740,7 @@ Transform:
   m_GameObject: {fileID: 1404037463}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -85.516, y: -9.64, z: -0.01}
+  m_LocalPosition: {x: -85.516, y: -9.393, z: -0.01}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37577,7 +37577,7 @@ Transform:
   m_GameObject: {fileID: 1780942654}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -82.639, y: -11.477, z: -0.01}
+  m_LocalPosition: {x: -82.639, y: -11.6, z: -0.01}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43210,7 +43210,7 @@ Transform:
   m_GameObject: {fileID: 2029988512}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -79.746, y: -11.477, z: -0.01}
+  m_LocalPosition: {x: -79.746, y: -11.6, z: -0.01}
   m_LocalScale: {x: 1, y: 0.7, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
