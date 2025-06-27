@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Sprites;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
@@ -14,9 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     private int currentHealth;
 
-   /* [SerializeField]
-    private GameObject[] heartIcons;*/
-
     private PlayerController playerController;
 
     [SerializeField]
@@ -26,7 +24,8 @@ public class GameManager : MonoBehaviour
     private Sprite fullHeart;
     [SerializeField]
     private Sprite emptyHeart;
-
+    [SerializeField] private GameObject inGameUI;
+ 
     void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
@@ -34,6 +33,7 @@ public class GameManager : MonoBehaviour
         UpdateScore();
         gameOverUI.SetActive(false);
         currentHealth = maxHealth;
+      
         UpdateHearts();
     }
 
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         score = 0;
 
         playerController.PlayDeathAnimation();
-
+        inGameUI.SetActive(false);
         StartCoroutine(ShowGameOverAfterDelay(1.5f));
     }
 
@@ -109,10 +109,13 @@ public class GameManager : MonoBehaviour
     {
         isGameOver=false;
         score = 0;
+        currentHealth = maxHealth;
         UpdateScore() ;
+        UpdateHearts();
         Time.timeScale = 1;
         SceneManager.LoadScene("Nam");
         mainMenu.SetActive(false);
+        inGameUI.SetActive(true);
         StartGame();
     }
 
@@ -127,6 +130,7 @@ public class GameManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        inGameUI.SetActive(true);
         Time.timeScale = 1f;
     }
 
@@ -134,12 +138,14 @@ public class GameManager : MonoBehaviour
     {
         mainMenu.SetActive(true);
         pauseMenu.SetActive(false);
+        inGameUI.SetActive(false);
         Time.timeScale = 0f;
     }
     public void pauseGameMenu()
     {   
         mainMenu.SetActive(false);
         pauseMenu.SetActive(true);
+        inGameUI.SetActive(false);
         Time.timeScale= 0f ;
     }
 
@@ -147,6 +153,7 @@ public class GameManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        inGameUI.SetActive(true);
         Time.timeScale = 1f;
     }
 
