@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: af03fa1426ec271439ac749372bd93e1
+guid: 18b25c97a90ec4e4d9792db7ffb40506
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5190526981810414931
-    second: anim_light2_0
+      213: 2425732979194380906
+    second: BG_Screen3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: anim_light2_0
+      name: BG_Screen3_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 31
-        height: 16
+        y: 44
+        width: 437
+        height: 158
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,74 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: daa1c1ce53b87f7b0800000000000000
-      internalID: -5190526981810414931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: anim_light2_1
-      rect:
-        serializedVersion: 2
-        x: 31
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 664dc2f68ecc10d4cb03712716592248
-      internalID: 1900014699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: anim_light2_2
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 0
-        width: 33
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6e1cfead4dc044428ae3b14e98b2a7f
-      internalID: 1514734183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: anim_light2_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec4c21dce914cc84ca97bca6d659ce1d
-      internalID: 1940051577
+      spriteID: a62c4d0ea4fe9a120800000000000000
+      internalID: 2425732979194380906
       vertices: []
       indices: 
       edges: []
@@ -191,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3b17d9cbe4be25d4f89584a23206fefe
+    spriteID: b55505c51964da7419f825ea207bbb92
     internalID: 0
     vertices: []
     indices: 
@@ -201,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      anim_light2_1: 1900014699
-      anim_light2_2: 1514734183
-      anim_light2_3: 1940051577
+      BG_Screen3_0: 2425732979194380906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

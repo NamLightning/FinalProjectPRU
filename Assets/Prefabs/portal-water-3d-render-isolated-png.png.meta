@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: af03fa1426ec271439ac749372bd93e1
+guid: c5a09ff1324cec64492b71b497c726d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5190526981810414931
-    second: anim_light2_0
+      213: -3120847644016164573
+    second: portal-water-3d-render-isolated-png_0
+  - first:
+      213: -3435159938228318639
+    second: portal-water-3d-render-isolated-png_1
+  - first:
+      213: 7735784508738691599
+    second: portal-water-3d-render-isolated-png_2
+  - first:
+      213: -1171197888094582983
+    second: portal-water-3d-render-isolated-png_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: anim_light2_0
+      name: portal-water-3d-render-isolated-png_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 21
         y: 0
-        width: 31
-        height: 16
+        width: 314
+        height: 375
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,74 +124,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: daa1c1ce53b87f7b0800000000000000
-      internalID: -5190526981810414931
+      spriteID: 3214d4c4a9580b4d0800000000000000
+      internalID: -3120847644016164573
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: anim_light2_1
+      name: portal-water-3d-render-isolated-png_4
       rect:
         serializedVersion: 2
-        x: 31
-        y: 0
-        width: 32
-        height: 16
+        x: 412
+        y: 31
+        width: 189
+        height: 326
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 664dc2f68ecc10d4cb03712716592248
-      internalID: 1900014699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: anim_light2_2
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 0
-        width: 33
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e6e1cfead4dc044428ae3b14e98b2a7f
-      internalID: 1514734183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: anim_light2_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ec4c21dce914cc84ca97bca6d659ce1d
-      internalID: 1940051577
+      spriteID: b85fc2841f4e651489c097e240bbdc70
+      internalID: -653468702
       vertices: []
       indices: 
       edges: []
@@ -191,7 +156,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3b17d9cbe4be25d4f89584a23206fefe
+    spriteID: be3040bacff665a47a1551d1bdcaf94c
     internalID: 0
     vertices: []
     indices: 
@@ -201,9 +166,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      anim_light2_1: 1900014699
-      anim_light2_2: 1514734183
-      anim_light2_3: 1940051577
+      portal-water-3d-render-isolated-png_4: -653468702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
