@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Teleporter
   - Sword
+  - Audio
+  - ShopNPC
   layers:
   - Default
   - TransparentFX
@@ -66,6 +68,9 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1761565701
+    locked: 0
+  - name: ShopNPC
+    uniqueID: 405876259
     locked: 0
   m_RenderingLayers:
   - Default

@@ -8,6 +8,7 @@ using UnityEngine.Sprites;
 public class GameManager : MonoBehaviour
 {
     private int score = 0;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject gameOverUI;
     private bool isGameOver = false;
     [SerializeField] private GameObject mainMenu;
