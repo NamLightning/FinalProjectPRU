@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shrooms - Copy_0: 1474161425410219960
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
