@@ -8,7 +8,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private GameObject swordHitbox;
-   [SerializeField] private float attackDuration = 0.2f;
+
+    [SerializeField] private float attackDuration = 0.2f;
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private LayerMask wallLayer;
+
+    private bool isInvincible = false;
+    [SerializeField] private float invincibilityDuration = 1f;
+    [SerializeField] private float knockbackForce = 10f;
+
+
+    //Audio 
+    AudioManager audioManager;
+
+
+    private bool isTouchingWall;
+
+
 
     private Animator anim;
     private bool isAttacking = false;
@@ -22,6 +38,7 @@ public class PlayerController : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         anim = GetComponent<Animator>();
         swordHitbox.SetActive(false);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     void Start()
     {
@@ -66,7 +83,20 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetButtonDown("Jump")&&isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            audioManager.PlaySFX(audioManager.jumpSound);
+            if (isGrounded)
+            {
+               
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            }
+            else if (!isGrounded && isTouchingWall)
+            {
+                
+                float direction = transform.localScale.x > 0 ? -1 : 1;
+                rb.linearVelocity = new Vector2(direction * moveSpeed, jumpForce);
+            }
+
         }
         isGrounded=Physics2D.OverlapCircle(groundCheck.position,0.2f, groundLayer);
         anim.SetBool("IsJumping", !isGrounded);
@@ -76,7 +106,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
+            
             StartCoroutine(PerformAttack());
+            audioManager.PlaySFX(audioManager.attackSound);
         }
     }
 
