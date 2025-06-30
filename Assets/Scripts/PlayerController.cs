@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        audioManager.PlaySFX(audioManager.playerHurt);
 
         // anim.SetTrigger("Hurt");
 
@@ -175,7 +176,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead) return;
 
-        isDead = true;  
+        isDead = true;
+
+        audioManager.PlaySFX(audioManager.gameOver);
 
         anim.SetTrigger("Death");
     }

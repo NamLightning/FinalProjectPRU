@@ -12,14 +12,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip EarnCoin;
     public AudioClip jumpSound;
     public AudioClip attackSound;
+    public AudioClip gameOver;
+    public AudioClip playerHurt;
 
 
 
 
     private void Start()
     {
-       // musicSource.clip = background;
-      //  musicSource.Play();
+        musicSource.clip = background;
+        musicSource.Play();
     }
 
     //Enable access from other scripts
@@ -28,6 +30,15 @@ public class AudioManager : MonoBehaviour
         if (clip != null)
         {
             sfxSource.PlayOneShot(clip);
+        }
+    }
+
+
+    public void StopMusic()
+    {
+        if (musicSource != null && musicSource.isPlaying)
+        {
+            musicSource.Stop();
         }
     }
 }

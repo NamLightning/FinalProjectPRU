@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class ShopNPC : MonoBehaviour
@@ -12,10 +13,12 @@ public class ShopNPC : MonoBehaviour
     public Button yesButton;
     public Button noButton;
     public GameObject shopPanel;
+    public GameObject instructionText;
 
     [Header("Shop Settings")]
     public float interactionRange = 3f;
     public string npcName = "Shop Keeper";
+    public string instructionMessage = "Press E to talk";
 
     private Transform player;
     private bool playerInRange = false;
@@ -26,6 +29,10 @@ public class ShopNPC : MonoBehaviour
         // Tìm player
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
+      
+        if (dialoguePanel) dialoguePanel.SetActive(false);
+        if (shopPanel) shopPanel.SetActive(false);
+
         // Setup buttons
         if (yesButton) yesButton.onClick.AddListener(OnYesClicked);
         if (noButton) noButton.onClick.AddListener(OnNoClicked);
@@ -35,10 +42,30 @@ public class ShopNPC : MonoBehaviour
     {
         CheckPlayerDistance();
 
+        // Hiển thị/ẩn instruction text
+        if (playerInRange && !dialogueActive)
+        {
+            if (instructionText)
+            {
+                instructionText.SetActive(true);
+                instructionText.GetComponent<TextMeshProUGUI>().text = instructionMessage;
+            }
+        }
+        else
+        {
+            if (instructionText) instructionText.SetActive(false);
+        }
+
         // Kiểm tra input để mở shop
         if (playerInRange && !dialogueActive && Input.GetKeyDown(KeyCode.E))
         {
             ShowDialogue();
+        }
+
+        // Đóng dialogue khi player ra khỏi tầm
+        if (!playerInRange && dialogueActive)
+        {
+            CloseDialogue();
         }
     }
 
@@ -53,9 +80,10 @@ public class ShopNPC : MonoBehaviour
 
     void ShowDialogue()
     {
+        instructionText.SetActive(false);
         dialogueActive = true;
         dialoguePanel.SetActive(true);
-        dialogueText.text = $"{npcName}: Hi! Would you like to buy some items like health ?";
+        dialogueText.text = $"{npcName}: Hi! Would you like to buy some items?";
 
         // Tạm dừng game (tùy chọn)
         Time.timeScale = 0f;
@@ -85,8 +113,10 @@ public class ShopNPC : MonoBehaviour
         dialogueActive = false;
         dialoguePanel.SetActive(false);
         shopPanel.SetActive(true);
+       
         Time.timeScale = 0f; // Tạm dừng game khi mở shop
     }
+
 
     // Method này có thể được gọi từ ShopManager khi đóng shop
     public void CloseShop()

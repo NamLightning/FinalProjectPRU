@@ -18347,6 +18347,11 @@ MonoBehaviour:
   gameOverUI: {fileID: 94795335}
   mainMenu: {fileID: 1478937007}
   pauseMenu: {fileID: 1672958619}
+  maxHealth: 3
+  heartIcons: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
+  inGameUI: {fileID: 0}
 --- !u!4 &928539057
 Transform:
   m_ObjectHideFlags: 0
@@ -18693,7 +18698,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935071826}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78e7f24d54619c24381fbb5513cee96a, type: 3}
   m_Name: 
@@ -18706,6 +18711,12 @@ MonoBehaviour:
   groundCheck: {fileID: 1439144806}
   swordHitbox: {fileID: 1782869078}
   attackDuration: 0.2
+  wallCheck: {fileID: 0}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  invincibilityDuration: 1
+  knockbackForce: 10
   gameManager: {fileID: 0}
 --- !u!61 &935071830
 BoxCollider2D:
@@ -18714,7 +18725,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935071826}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

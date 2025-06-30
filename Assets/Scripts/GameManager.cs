@@ -27,6 +27,15 @@ public class GameManager : MonoBehaviour
     private Sprite emptyHeart;
     [SerializeField] private GameObject inGameUI;
 
+    //Audio 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+       
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
@@ -157,6 +166,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (audioManager != null)
+        {
+            audioManager.StopMusic(); 
+        }
+
         mainMenu.SetActive(false);
         pauseMenu.SetActive(false);
         inGameUI.SetActive(true);
@@ -188,7 +202,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Nam");
+        SceneManager.LoadScene("Hoang");
     }
     public void QuitGame()
     {

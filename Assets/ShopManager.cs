@@ -116,7 +116,7 @@ public class ShopManager : MonoBehaviour
     private void UpdateShopUI()
     {
         if (playerScoreText)
-            playerScoreText.text = "Điểm: " + gameManager.CurrentScore;
+            playerScoreText.text = "Điểm: " + gameManager.CurrentScore.ToString();
 
         for (int i = 0; i < itemButtons.Count; i++)
         {
