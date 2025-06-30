@@ -23,6 +23,7 @@ public class ShopNPC : MonoBehaviour
     private Transform player;
     private bool playerInRange = false;
     private bool dialogueActive = false;
+    private bool shopActive = false; // Thêm biến để theo dõi trạng thái shop
 
     void Start()
     {
@@ -43,7 +44,7 @@ public class ShopNPC : MonoBehaviour
         CheckPlayerDistance();
 
         // Hiển thị/ẩn instruction text
-        if (playerInRange && !dialogueActive)
+        if (playerInRange && !dialogueActive && !shopActive)
         {
             if (instructionText)
             {
@@ -57,7 +58,7 @@ public class ShopNPC : MonoBehaviour
         }
 
         // Kiểm tra input để mở shop
-        if (playerInRange && !dialogueActive && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && !dialogueActive && !shopActive && Input.GetKeyDown(KeyCode.E))
         {
             ShowDialogue();
         }
@@ -112,6 +113,7 @@ public class ShopNPC : MonoBehaviour
 
         dialogueActive = false;
         dialoguePanel.SetActive(false);
+        shopActive = true; // Set shop active
         shopPanel.SetActive(true);
        
         Time.timeScale = 0f; // Tạm dừng game khi mở shop
@@ -121,6 +123,7 @@ public class ShopNPC : MonoBehaviour
     // Method này có thể được gọi từ ShopManager khi đóng shop
     public void CloseShop()
     {
+        shopActive = false; // Set shop inactive
         shopPanel.SetActive(false);
         Time.timeScale = 1f;
     }
