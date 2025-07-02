@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
         mainMenu.SetActive(false);
         pauseMenu.SetActive(false);
         inGameUI.SetActive(true);
-        Time.timeScale = 1f;
+        Time.timeScale = 1f;      
     }
 
     public void MainMenu()
