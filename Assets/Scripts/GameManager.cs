@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Nam");
+        SceneManager.LoadScene("Hoang");
     }
     public void QuitGame()
     {
