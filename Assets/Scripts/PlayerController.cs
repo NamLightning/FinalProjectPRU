@@ -77,17 +77,20 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (isDashing) return; // Không di chuyển thường khi đang dash
+        if (isDashing) return;
 
         float moveInput = Input.GetAxis("Horizontal");
-        Debug.Log("Move Input: " + moveInput);
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        if (moveInput > 0) transform.localScale = new Vector3(1, 1, 1);
-        else if (moveInput < 0) transform.localScale = new Vector3(-1, 1, 1);
+        // ✅ Flip đúng hướng, nhưng giữ nguyên scale Y/Z
+        Vector3 scale = transform.localScale;
+        if (moveInput > 0) scale.x = Mathf.Abs(scale.x);
+        if (moveInput < 0) scale.x = -Mathf.Abs(scale.x);
+        transform.localScale = scale;
 
         anim.SetFloat("Speed", Mathf.Abs(moveInput));
     }
+
 
     private void HandleJump()
     {
