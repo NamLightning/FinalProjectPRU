@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float invincibilityDuration = 1f;
     [SerializeField] private float knockbackForce = 10f;
 
+    //Audio 
+    AudioManager audioManager;
+
     private bool isTouchingWall;
 
     private Animator anim;
@@ -40,7 +43,9 @@ public class PlayerController : MonoBehaviour
         gameManager = FindAnyObjectByType<GameManager>();
         anim = GetComponent<Animator>();
         swordHitbox.SetActive(false);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         if (trail != null) trail.emitting = false;
+
     }
 
     void Update()
@@ -99,6 +104,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            audioManager.PlaySFX(audioManager.jumpSound);
             if (isGrounded)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -122,6 +128,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
             StartCoroutine(PerformAttack());
+            audioManager.PlaySFX(audioManager.attackSound);
         }
     }
 
@@ -178,6 +185,7 @@ public class PlayerController : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        audioManager.PlaySFX(audioManager.playerHurt);
 
         // anim.SetTrigger("Hurt");
 
