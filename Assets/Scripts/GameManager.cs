@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                heartIcons[i].sprite = emptyHeart;
+                heartIcons[i].sprite = emptyHeart;  
             }
         }
     }
