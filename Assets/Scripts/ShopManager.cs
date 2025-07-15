@@ -50,52 +50,139 @@ public class ShopManager : MonoBehaviour
         if (shopPanel) shopPanel.SetActive(false);
     }
 
+    void Update()
+    {
+        // Cập nhật điểm liên tục khi shop đang mở
+        if (shopPanel.activeInHierarchy)
+        {
+            UpdateShopUI();
+        }
+    }
+
     void CreateShopItems()
     {
+        // Clear existing buttons
+        foreach (Transform child in itemContainer)
+        {
+            Destroy(child.gameObject);
+        }
+        itemButtons.Clear();
+
         foreach (ShopItem item in shopItems)
         {
+
             GameObject buttonObj = Instantiate(itemButtonPrefab, itemContainer);
             Button itemButton = buttonObj.GetComponent<Button>();
 
-            // Setup button appearance
-            Image itemImage = buttonObj.transform.Find("ItemIcon").GetComponent<Image>();
-            Text itemNameText = buttonObj.transform.Find("ItemName").GetComponent<Text>();
-            Text priceText = buttonObj.transform.Find("Price").GetComponent<Text>();
+            if (itemButton == null)
+            {
 
-            if (itemImage) itemImage.sprite = item.itemIcon;
-            if (itemNameText) itemNameText.text = item.itemName;
-            if (priceText) priceText.text = item.price.ToString() + " điểm";
+                continue;
+            }
 
-            // Add click listener
+
+
+            // Setup button appearance - SỬA LỖI TÌM COMPONENT
+            SetupButtonAppearance(buttonObj, item);
+
+            // Add click listener với debug
             ShopItem currentItem = item; // Capture for closure
-            itemButton.onClick.AddListener(() => BuyItem(currentItem));
+            itemButton.onClick.AddListener(() => {
+                BuyItem(currentItem);
+            });
 
             itemButtons.Add(itemButton);
         }
     }
 
+    private void SetupButtonAppearance(GameObject buttonObj, ShopItem item)
+    {
+      
+        Transform itemIconTransform = buttonObj.transform.Find("ItemIcon");
+        Transform itemNameTransform = buttonObj.transform.Find("ItemName");
+        Transform priceTransform = buttonObj.transform.Find("Price");
+
+        // Cách 2: Tìm bằng GetComponentsInChildren (backup)
+        if (itemNameTransform == null || priceTransform == null)
+        {
+            Text[] allTexts = buttonObj.GetComponentsInChildren<Text>();
+            TextMeshProUGUI[] allTMPs = buttonObj.GetComponentsInChildren<TextMeshProUGUI>();
+
+            // Gán text cho các component tìm được
+            if (allTexts.Length > 0) allTexts[0].text = item.itemName;
+            if (allTexts.Length > 1) allTexts[1].text = item.price.ToString();
+
+            if (allTMPs.Length > 0) allTMPs[0].text = item.itemName;
+            if (allTMPs.Length > 1) allTMPs[1].text = item.price.ToString();
+        }
+    }
+
+    // THÊM HÀM MỚI: Kiểm tra xem item có thể mua được không
+    private bool CanBuyItem(ShopItem item)
+    {
+        if (gameManager == null) return false;
+
+        // Kiểm tra đủ điểm
+        if (gameManager.CurrentScore < item.price) return false;
+
+        // Kiểm tra điều kiện đặc biệt cho từng loại item
+        switch (item.type)
+        {
+            case ItemType.Health:
+                // Chỉ cho phép mua heal nếu chưa full máu
+                return !gameManager.IsFullHealth();
+
+            case ItemType.Weapon:
+                // Có thể thêm logic kiểm tra weapon ở đây
+                return true;
+
+            case ItemType.PowerUp:
+                // Có thể thêm logic kiểm tra power-up ở đây
+                return true;
+
+            default:
+                return true;
+        }
+    }
+
     public void BuyItem(ShopItem item)
     {
-        if (gameManager.SpendScore(item.price))
+
+        // Kiểm tra GameManager
+        if (gameManager == null)
+        {
+            return;
+        }
+
+        // SỬA: Sử dụng hàm CanBuyItem thay vì chỉ kiểm tra điểm
+        if (CanBuyItem(item) && gameManager.SpendScore(item.price))
         {
             // Áp dụng hiệu ứng item
             ApplyItemEffect(item);
 
             // Update UI sau khi mua
             UpdateShopUI();
-
-            Debug.Log($"Đã mua {item.itemName} với giá {item.price} điểm!");
         }
         else
         {
-            Debug.Log("Không đủ điểm để mua item này!");
-            // TODO: Hiển thị thông báo UI nếu cần
+            // Thông báo lý do không thể mua (tuỳ chọn)
+            if (item.type == ItemType.Health && gameManager.IsFullHealth())
+            {
+                Debug.Log("Health is already full!");
+            }
+            else if (gameManager.CurrentScore < item.price)
+            {
+                Debug.Log("Not enough score!");
+            }
         }
     }
 
     private void ApplyItemEffect(ShopItem item)
     {
-        if (gameManager.IsGameOver()) return;
+        if (gameManager.IsGameOver())
+        {
+            return;
+        }
 
         switch (item.type)
         {
@@ -104,11 +191,11 @@ public class ShopManager : MonoBehaviour
                 break;
 
             case ItemType.Weapon:
-                Debug.Log("Weapon upgrade applied!");
+               
                 break;
 
             case ItemType.PowerUp:
-                Debug.Log("Power-up applied!");
+               
                 break;
         }
     }
@@ -116,17 +203,18 @@ public class ShopManager : MonoBehaviour
     private void UpdateShopUI()
     {
         if (playerScoreText)
-            playerScoreText.text = "Điểm: " + gameManager.CurrentScore.ToString();
+            playerScoreText.text = "Score: " + gameManager.CurrentScore.ToString();
 
         for (int i = 0; i < itemButtons.Count; i++)
         {
             if (i < shopItems.Length)
             {
-                bool canAfford = gameManager.CurrentScore >= shopItems[i].price;
-                itemButtons[i].interactable = canAfford;
+                // SỬA: Sử dụng CanBuyItem thay vì chỉ kiểm tra điểm
+                bool canBuy = CanBuyItem(shopItems[i]);
+                itemButtons[i].interactable = canBuy;
 
                 ColorBlock colors = itemButtons[i].colors;
-                colors.normalColor = canAfford ? Color.white : Color.gray;
+                colors.normalColor = canBuy ? Color.white : Color.gray;
                 itemButtons[i].colors = colors;
             }
         }

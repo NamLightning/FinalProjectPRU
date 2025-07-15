@@ -142,6 +142,11 @@ public class GameManager : MonoBehaviour
         UpdateHearts();
     }
 
+    public bool IsFullHealth()
+    {
+        return currentHealth >= maxHealth;
+    }
+
 
     public void RestartGame()
     {
