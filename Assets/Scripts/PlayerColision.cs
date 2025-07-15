@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerColision : MonoBehaviour
@@ -30,6 +30,8 @@ public class PlayerColision : MonoBehaviour
                 playerController.TakeHit(collision.transform.position);
             }
         }
+
+      
 
     }
 }

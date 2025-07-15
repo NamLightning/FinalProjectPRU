@@ -9,16 +9,17 @@ TagManager:
   - Enemy
   - Teleporter
   - Sword
+  - Boss
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
   - Wall
-  - 
+  - Boss
   - 
   - 
   - 
