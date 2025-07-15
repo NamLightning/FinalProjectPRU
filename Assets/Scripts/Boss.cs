@@ -12,7 +12,7 @@ public class Boss : MonoBehaviour
     public float chaseSpeed = 1.5f;       // Tốc độ chase chậm hơn
     public float boundaryDistance = 5f;   // Khoảng cách ranh giới từ startPos
     private Vector3 startPos;
-    private bool movingRight = true;
+    private bool movingRight = false;
 
     [Header("Attack Parameters")]
     [SerializeField] private float meleeAttackCooldown = 2f;
@@ -204,18 +204,29 @@ public class Boss : MonoBehaviour
         // Di chuyển về phía player nhưng kiểm tra boundary
         if (distanceToPlayer > meleeRange)
         {
-            Vector2 moveDirection = directionToPlayer * chaseSpeed;
+            // CHỈ lấy hướng X, bỏ qua Y để không bị lấn xuống
+            float moveDirectionX = directionToPlayer.x > 0 ? 1f : -1f;
+            Vector2 moveDirection = new Vector2(moveDirectionX * chaseSpeed, 0f);
+
             Vector3 newPosition = transform.position + (Vector3)moveDirection * Time.deltaTime;
 
             // Kiểm tra boundary trước khi di chuyển
             float leftBound = startPos.x - boundaryDistance;
             float rightBound = startPos.x + boundaryDistance;
 
-            // Giới hạn di chuyển trong boundary
+            // Giới hạn di chuyển trong boundary - CHỈ DI CHUYỂN TRỤC X
             if (newPosition.x >= leftBound && newPosition.x <= rightBound)
             {
-                transform.position = newPosition;
+                rb.linearVelocity = new Vector2(moveDirectionX * chaseSpeed, 0f); // Luôn Y = 0
             }
+            else
+            {
+                rb.linearVelocity = new Vector2(0f, 0f); // Dừng lại nếu ra ngoài boundary
+            }
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0f, 0f); // Dừng lại khi đủ gần
         }
     }
 
