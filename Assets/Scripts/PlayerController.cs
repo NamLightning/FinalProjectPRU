@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            audioManager.PlaySFX(audioManager.attackSound);
+            audioManager.PlaySFX(audioManager.jumpSound);
             if (isGrounded)
             {
                
