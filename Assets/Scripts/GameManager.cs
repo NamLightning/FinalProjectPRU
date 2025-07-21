@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxHealth = 3;
     private int currentHealth;
+    public int CurrentScore => score;
 
     private PlayerController playerController;
 
@@ -25,7 +26,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Sprite emptyHeart;
     [SerializeField] private GameObject inGameUI;
- 
+
+    //Audio 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     void Start()
     {
         playerController = FindAnyObjectByType<PlayerController>();
@@ -51,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void UpdateScore()
+    public void UpdateScore()
     {
         scoreText.text = score.ToString();
     }
@@ -104,6 +113,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Update
+    public bool SpendScore(int amount)
+    {
+        if (isGameOver) return false;
+
+        if (score >= amount)
+        {
+            score -= amount;
+            UpdateScore();
+            return true;
+        }
+        else
+        {
+            Debug.Log("Not enough score!");
+            return false;
+        }
+    }
+
+    public void Heal(int amount)
+    {
+        if (isGameOver) return;
+
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        UpdateHearts();
+    }
+
+    public bool IsFullHealth()
+    {
+        return currentHealth >= maxHealth;
+    }
+
 
     public void RestartGame()
     {
@@ -128,6 +168,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        if (audioManager != null)
+        {
+            audioManager.StopMusic();
+        }
+
         mainMenu.SetActive(false);
         pauseMenu.SetActive(false);
         inGameUI.SetActive(true);
@@ -159,7 +204,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("Hoang");
+        SceneManager.LoadScene("level2");
     }
     public void QuitGame()
     {

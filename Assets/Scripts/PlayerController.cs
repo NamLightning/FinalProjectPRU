@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float invincibilityDuration = 1f;
     [SerializeField] private float knockbackForce = 10f;
 
+    //Audio 
+    AudioManager audioManager;
+
     private bool isTouchingWall;
 
     private Animator anim;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         swordHitbox.SetActive(false);
         if (trail != null) trail.emitting = false;
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -82,7 +86,7 @@ public class PlayerController : MonoBehaviour
         float moveInput = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
 
-        // ✅ Flip đúng hướng, nhưng giữ nguyên scale Y/Z
+       
         Vector3 scale = transform.localScale;
         if (moveInput > 0) scale.x = Mathf.Abs(scale.x);
         if (moveInput < 0) scale.x = -Mathf.Abs(scale.x);
@@ -99,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
+            audioManager.PlaySFX(audioManager.jumpSound);
             if (isGrounded)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -122,6 +127,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isAttacking)
         {
             StartCoroutine(PerformAttack());
+            audioManager.PlaySFX(audioManager.attackSound);
         }
     }
 
@@ -179,6 +185,8 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
+        audioManager.PlaySFX(audioManager.playerHurt);
+
         // anim.SetTrigger("Hurt");
 
         StartCoroutine(InvincibilityCoroutine());
@@ -207,6 +215,8 @@ public class PlayerController : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
+
+        audioManager.PlaySFX(audioManager.gameOver);
 
         anim.SetTrigger("Death");
     }

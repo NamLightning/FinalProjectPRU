@@ -14380,7 +14380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee69a5d48b3c714a9879c995397a71b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 169476766}
 --- !u!114 &570829040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26491,6 +26491,10 @@ MonoBehaviour:
   invincibilityDuration: 1
   knockbackForce: 3
   gameManager: {fileID: 169476766}
+  dashForce: 20
+  dashDuration: 0.2
+  dashCooldown: 1
+  trail: {fileID: 0}
 --- !u!61 &1049395044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42866,6 +42870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6714d98a522028447933713f26eacd37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDamage: 1
 --- !u!1 &1632627477
 GameObject:
   m_ObjectHideFlags: 0
